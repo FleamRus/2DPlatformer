@@ -1,19 +1,19 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MoverEnemies : MonoBehaviour
+public class EnemiesMover : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed = 1.0f;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private ÑontrolAnimation _animation;
+    [SerializeField] private AnimationControl _animation;
+
+    [Header("Ýëåìåíòû äâèæåíèÿ")]
+    [SerializeField] private CharacterRotator _characterRotator;
+    [SerializeField] private CharacterMover _characterMover;
 
     private bool _movingRight = false;
-    private Rigidbody2D _riginbody;
     private TurnPoint[] _turnPoints;
 
     private void Awake()
     {
-        _riginbody = GetComponent<Rigidbody2D>();
         _turnPoints = FindObjectsOfType<TurnPoint>();
     }
 
@@ -42,14 +42,11 @@ public class MoverEnemies : MonoBehaviour
     {
         float direction = _movingRight ? 1 : -1;
 
-        _riginbody.velocity = new Vector2(direction * _moveSpeed, _riginbody.velocity.y);
+        _characterMover.MoverCharacter(direction);
 
-        if (direction != 0)
-        {
-            _spriteRenderer.flipX = direction < 0;
-        }
+        _characterRotator.RotateCharacter(direction);
 
-        _animation.AnimationMove(direction);
+        _animation.MoveAnimation(direction);
     }
 
     private void FlipDirection()
@@ -57,7 +54,7 @@ public class MoverEnemies : MonoBehaviour
         _movingRight = !_movingRight;
     }
 
-    private void EnemyArrived(MoverEnemies enemy)
+    private void EnemyArrived(EnemiesMover enemy)
     {
         if (enemy == this)
         {

@@ -1,18 +1,19 @@
 using UnityEngine;
 
-public class ÑontrolAnimation : MonoBehaviour
+[RequireComponent(typeof(Animator))]
+public class AnimationControl : MonoBehaviour
 {
     private Animator _animator;
+
+    private static readonly int moveAxisX = Animator.StringToHash("moveX");
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
 
-    public void AnimationMove(float moveX)
+    public void MoveAnimation(float moveX)
     {
-        string moveAxisX = "moveX";
-
         _animator.SetFloat(moveAxisX, Mathf.Abs(moveX));
     }
 }

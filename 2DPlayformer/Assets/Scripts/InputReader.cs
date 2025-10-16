@@ -6,13 +6,18 @@ public class InputReader : MonoBehaviour
     private string _horizontalVector = "Horizontal";
     private string _jumpButtom = "Jump";
 
-    public float GetMoveDirection()
+    public float MoveDirection { get; private set; }
+    public bool JumpPressed { get; private set; }
+
+    private void Update()
     {
-        return Input.GetAxisRaw(_horizontalVector);
+       MoveDirection= Input.GetAxisRaw(_horizontalVector);
+
+       JumpPressed= Input.GetButtonDown(_jumpButtom);
     }
 
-    public bool IsJumpPressed()
-    {
-        return Input.GetButtonDown(_jumpButtom);
+    public void ConsumeJump()
+    { 
+    JumpPressed = false;
     }
 }

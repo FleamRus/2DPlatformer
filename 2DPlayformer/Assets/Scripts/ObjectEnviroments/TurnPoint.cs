@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class TurnPoint : MonoBehaviour
 {
-    public event Action<MoverEnemies> EnemyIsArrived;
+    public event Action<EnemiesMover> EnemyIsArrived;
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class TurnPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out MoverEnemies enemiy))
+        if (collision.TryGetComponent(out EnemiesMover enemiy))
         {
             EnemyIsArrived?.Invoke(enemiy);
         }

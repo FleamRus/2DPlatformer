@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CheckGrounded : MonoBehaviour
+public class GroundChecker : MonoBehaviour
 {
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundCheckRadius;
