@@ -16,12 +16,12 @@ public class CoinCollector : MonoBehaviour
         _objectFeel.ObjectTouched -= CollectCoin;
     }
 
-    public void CollectCoin(Collider2D collider)
+    private void CollectCoin(Collider2D collider)
     {
         if (collider.TryGetComponent(out Coin coin))
         {
             _coins++;
-            Destroy(coin.gameObject);
+            //Destroy(coin.gameObject);
         }
     }
 }

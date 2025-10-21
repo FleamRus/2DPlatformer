@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TurnPoint : MonoBehaviour
+public class CollisionVisible : MonoBehaviour
 {
     private void OnDrawGizmos()
     {
