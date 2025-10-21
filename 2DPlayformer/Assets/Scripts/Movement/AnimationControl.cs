@@ -3,9 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AnimationControl : MonoBehaviour
 {
-    private Animator _animator;
-
     private static readonly int moveAxisX = Animator.StringToHash("moveX");
+
+    private Animator _animator;
 
     private void Awake()
     {

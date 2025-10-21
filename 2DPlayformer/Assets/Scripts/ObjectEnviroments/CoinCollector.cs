@@ -1,33 +1,27 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class CoinCollector : MonoBehaviour
 {
-    private List<Coin> _coins = new();
+    [SerializeField] private ObjectFeel _objectFeel;
+
+    private int _coins;
 
     private void OnEnable()
     {
-        Coin[] coins = FindObjectsOfType<Coin>();
-
-        foreach (Coin coin in coins)
-        {
-            coin.IsTouchedCoin += CollectCoin;
-        }
+        _objectFeel.ObjectTouched += CollectCoin;
     }
 
     private void OnDisable()
     {
-        Coin[] coins = FindObjectsOfType<Coin>();
-
-        foreach (Coin coin in coins)
-        {
-            coin.IsTouchedCoin -= CollectCoin;
-        }
+        _objectFeel.ObjectTouched -= CollectCoin;
     }
 
-    public void CollectCoin(Coin coin)
+    public void CollectCoin(Collider2D collider)
     {
-        _coins.Add(coin);
-        Destroy(coin.gameObject);
+        if (collider.TryGetComponent(out Coin coin))
+        {
+            _coins++;
+            Destroy(coin.gameObject);
+        }
     }
 }

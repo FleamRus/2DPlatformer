@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMover : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private AnimationControl _animation;
@@ -12,28 +12,39 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private CharacterRotator _characterRotator;
 
+    private float _moveInput;
+    private bool _jumpRequested;
 
     private void Awake()
     {
         _characterJumper = GetComponent<CharacterJumper>();
-        _characterMover= GetComponent<CharacterMover>();
-        _characterRotator= GetComponent<CharacterRotator>();
+        _characterMover = GetComponent<CharacterMover>();
+        _characterRotator = GetComponent<CharacterRotator>();
     }
 
     private void Update()
     {
-        float moveInput = _inputReader.MoveDirection;
+        _moveInput = _inputReader.MoveDirection;
 
-        _characterMover.MoverCharacter(moveInput);
+        _characterRotator.RotateCharacter(_moveInput);
 
-        _characterRotator.RotateCharacter(moveInput);
+        _animation.MoveAnimation(_moveInput);
 
         if (_inputReader.JumpPressed && _checkGrounded.IsGrounded)
         {
-            _characterJumper.Jump();
+            _jumpRequested = true;
             _inputReader.ConsumeJump();
         }
+    }
 
-        _animation.MoveAnimation(moveInput);
+    private void FixedUpdate()
+    {
+        _characterMover.MoverCharacter(_moveInput);
+
+        if (_jumpRequested)
+        {
+            _characterJumper.Jump();
+            _jumpRequested = false;
+        }
     }
 }
