@@ -4,7 +4,7 @@ public class Healer : MonoBehaviour
 {
     [SerializeField] private ObjectFeel _objectFeel;
     [SerializeField] private int _healAmount = 10;
-    [SerializeField] private Health _health;
+    [SerializeField] private Wellness _health;
 
     private void OnEnable()
     {
