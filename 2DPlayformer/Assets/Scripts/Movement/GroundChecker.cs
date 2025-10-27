@@ -27,11 +27,13 @@ public class GroundChecker : MonoBehaviour
 
     private IEnumerator CheckGround()
     {
+        var wait = new WaitForSeconds (_updateInterval);
+
         while (enabled)
         {
             _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
 
-            yield return new WaitForSeconds(_updateInterval);
+            yield return wait;
         }
     }
 }

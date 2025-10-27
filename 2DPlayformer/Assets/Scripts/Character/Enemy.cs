@@ -8,14 +8,23 @@ public class Enemy : MonoBehaviour
     [SerializeField] private CharacterRotator _characterRotator;
     [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private TerritoryPatrol _territoryPatrol;
+    [SerializeField] private PlayerChaser _playerChaser;
 
     private float _directionMove;
 
     private void Update()
     {
-        _territoryPatrol.CheckDistance();
+        if (!_playerChaser.IsPlayerClose)
+        {
+            _territoryPatrol.CheckDistance();
 
-        _directionMove = _territoryPatrol.SetTerritoyPatrol();
+            _directionMove = _territoryPatrol.SetTerritoyPatrol();
+
+        }
+        else
+        {
+            _directionMove = _playerChaser.SetDirectionToPlayer(transform.position);
+        }
     }
 
     private void FixedUpdate()

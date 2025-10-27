@@ -18,10 +18,9 @@ public class CoinCollector : MonoBehaviour
 
     private void CollectCoin(Collider2D collider)
     {
-        if (collider.TryGetComponent(out Coin coin))
+        if (collider.TryGetComponent(out Coin _))
         {
             _coins++;
-            //Destroy(coin.gameObject);
         }
     }
 }
