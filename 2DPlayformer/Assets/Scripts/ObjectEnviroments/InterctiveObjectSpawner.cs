@@ -3,8 +3,8 @@
 [System.Serializable]
 public class SpawnArea
 {
-    public Transform areaCenter;
-    public Vector2 size;
+    public Transform AreaCenter;
+    public Vector2 Size;
 }
 
 public class InterctiveObjectSpawner : MonoBehaviour
@@ -40,9 +40,9 @@ public class InterctiveObjectSpawner : MonoBehaviour
         Gizmos.color = Color.yellow;
         foreach (var area in _spawnArea)
         {
-            if (area != null && area.areaCenter != null)
+            if (area != null && area.AreaCenter != null)
             {
-                Gizmos.DrawWireCube(area.areaCenter.position, area.size);
+                Gizmos.DrawWireCube(area.AreaCenter.position, area.Size);
             }
         }
     }
@@ -59,11 +59,11 @@ public class InterctiveObjectSpawner : MonoBehaviour
         SpawnArea area = _spawnArea[areaIndex];
 
         Vector2 randomPosition = new(
-            Random.Range(-area.size.x / symmetricalInsex, area.size.x / symmetricalInsex),
-            Random.Range(-area.size.y / symmetricalInsex, area.size.y / symmetricalInsex));
+            Random.Range(-area.Size.x / symmetricalInsex, area.Size.x / symmetricalInsex),
+            Random.Range(-area.Size.y / symmetricalInsex, area.Size.y / symmetricalInsex));
 
 
-        Vector2 spawnPosition = (Vector2)area.areaCenter.position + randomPosition;
+        Vector2 spawnPosition = (Vector2)area.AreaCenter.position + randomPosition;
 
         Instantiate(gameObject, spawnPosition, Quaternion.identity);
     }

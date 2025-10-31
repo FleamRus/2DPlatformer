@@ -4,15 +4,19 @@ using UnityEngine;
 public class Wellness : MonoBehaviour, IDamageable
 {
     public event Action<Wellness> DieCharacter;
+    public event Action<int, int> HealthChanged;
 
     [SerializeField] private int _maxHealth = 100;
 
     private int _currentHealth;
     private int _minHealth = 0;
 
+    public int CurrentHealth => _currentHealth;
+
     private void Awake()
     {
         _currentHealth = _maxHealth;
+        HealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
     public void Heal(int amount)
@@ -21,6 +25,7 @@ public class Wellness : MonoBehaviour, IDamageable
         {
             _currentHealth += amount;
             _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
+            HealthChanged?.Invoke(_currentHealth, _maxHealth);
         }
     }
 
@@ -30,6 +35,7 @@ public class Wellness : MonoBehaviour, IDamageable
         {
             _currentHealth -= amount;
             _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
+            HealthChanged?.Invoke(_currentHealth, _maxHealth);
         }
 
         if (_currentHealth <= 0)
