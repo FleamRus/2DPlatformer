@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class ObjectFeel : MonoBehaviour
+public class TouchTracking : MonoBehaviour
 {
     [SerializeField] private LayerMask _interactiveLayer;
 

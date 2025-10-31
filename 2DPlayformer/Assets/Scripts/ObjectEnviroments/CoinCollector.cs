@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CoinCollector : MonoBehaviour
 {
-    [SerializeField] private ObjectFeel _objectFeel;
+    [SerializeField] private TouchTracking _objectFeel;
 
     private int _coins;
 

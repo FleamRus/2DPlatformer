@@ -14,13 +14,13 @@ public class SmoothSliderHealth : MonoBehaviour
     private void OnEnable()
     {
         _health.Initialized += InitBar;
-        _health.HealthChanged += UpdateBar;
+        _health.Changed += UpdateBar;
     }
 
     private void OnDisable()
     {
         _health.Initialized -= InitBar;
-        _health.HealthChanged -= UpdateBar;
+        _health.Changed -= UpdateBar;
     }
 
     private void UpdateBar(int current, int max)

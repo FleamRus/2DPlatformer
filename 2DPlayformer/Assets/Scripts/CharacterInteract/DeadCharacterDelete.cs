@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DeleteDeadCharacter : MonoBehaviour
+public class DeadCharacterDelete : MonoBehaviour
 {
     [SerializeField] private Health _health;
 

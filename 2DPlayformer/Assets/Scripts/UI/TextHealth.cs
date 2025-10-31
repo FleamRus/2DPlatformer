@@ -8,12 +8,12 @@ public class TextHealth : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealthChanged += UpdateHealth;
+        _health.Changed += UpdateHealth;
     }
 
     private void OnDisable()
     {
-        _health.HealthChanged -= UpdateHealth;
+        _health.Changed -= UpdateHealth;
     }
 
     private void UpdateHealth(int current, int max)

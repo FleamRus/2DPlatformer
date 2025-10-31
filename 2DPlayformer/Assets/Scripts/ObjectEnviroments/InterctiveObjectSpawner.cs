@@ -9,7 +9,7 @@ public class SpawnArea
 
 public class InterctiveObjectSpawner : MonoBehaviour
 {
-    [SerializeField] private ObjectFeel _objectFeel;
+    [SerializeField] private TouchTracking _objectFeel;
     [SerializeField] private GameObject _coin;
     [SerializeField] private int _spawnCountCoin = 4;
     [SerializeField] private GameObject _medicalKit;

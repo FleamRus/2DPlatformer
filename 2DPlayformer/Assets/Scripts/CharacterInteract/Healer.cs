@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Healer : MonoBehaviour
 {
-    [SerializeField] private ObjectFeel _objectFeel;
+    [SerializeField] private TouchTracking _objectFeel;
     [SerializeField] private int _healAmount = 10;
     [SerializeField] private Health _health;
 
