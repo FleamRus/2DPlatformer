@@ -1,22 +1,23 @@
 using System;
 using UnityEngine;
 
-public class Wellness : MonoBehaviour, IDamageable
+public class Health : MonoBehaviour, IDamageable
 {
-    public event Action<Wellness> DieCharacter;
+    public event Action<Health> DieCharacter;
     public event Action<int, int> HealthChanged;
+    public event Action<int, int> Initialized;
 
     [SerializeField] private int _maxHealth = 100;
 
     private int _currentHealth;
     private int _minHealth = 0;
 
-    public int CurrentHealth => _currentHealth;
-
     private void Awake()
     {
         _currentHealth = _maxHealth;
+
         HealthChanged?.Invoke(_currentHealth, _maxHealth);
+        Initialized?.Invoke(_currentHealth, _maxHealth);
     }
 
     public void Heal(int amount)

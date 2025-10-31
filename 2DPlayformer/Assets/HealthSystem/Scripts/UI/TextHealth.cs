@@ -3,7 +3,7 @@ using TMPro;
 
 public class TextHealth : MonoBehaviour
 {
-    [SerializeField] private Wellness _health;
+    [SerializeField] private Health _health;
     [SerializeField] private TMP_Text _textMeshPro;
 
     private void OnEnable()

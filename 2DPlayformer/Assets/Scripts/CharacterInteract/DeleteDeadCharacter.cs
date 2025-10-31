@@ -2,19 +2,19 @@
 
 public class DeleteDeadCharacter : MonoBehaviour
 {
-    [SerializeField] private Wellness _wellness;
+    [SerializeField] private Health _health;
 
     private void OnEnable()
     {
-        _wellness.DieCharacter += DeleteCharacter;
+        _health.DieCharacter += DeleteCharacter;
     }
 
     private void OnDisable()
     {
-        _wellness.DieCharacter -= DeleteCharacter;
+        _health.DieCharacter -= DeleteCharacter;
     }
 
-    public void DeleteCharacter(Wellness character)
+    public void DeleteCharacter(Health character)
     {
         Destroy(gameObject);
     }
