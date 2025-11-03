@@ -15,7 +15,7 @@ public class PlayerChaser : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(CheckSpace());
+        StartCoroutine(EvaluteSpace());
     }
 
     private void OnDrawGizmosSelected()
@@ -40,7 +40,7 @@ public class PlayerChaser : MonoBehaviour
         return 0f;
     }
 
-    private IEnumerator CheckSpace()
+    private IEnumerator EvaluteSpace()
     {
         var wait = new WaitForSeconds(_updateInterval);
 

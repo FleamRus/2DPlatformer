@@ -4,7 +4,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private AnimationControl _animation;
 
-    [Header("Ёлементы движени€")]
     [SerializeField] private CharacterRotator _characterRotator;
     [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private TerritoryPatrol _territoryPatrol;
@@ -16,7 +15,7 @@ public class Enemy : MonoBehaviour
     {
         if (!_playerChaser.IsPlayerClose)
         {
-            _territoryPatrol.CheckDistance();
+            _territoryPatrol.EvaluteDistance();
 
             _directionMove = _territoryPatrol.SetTerritoyPatrol();
 

@@ -32,7 +32,7 @@ public class TerritoryPatrol : MonoBehaviour
         return _directionMove;
     }
 
-    public void CheckDistance()
+    public void EvaluteDistance()
     {
         float sqrDistance = (_currentTarget.position - transform.position).sqrMagnitude;
 

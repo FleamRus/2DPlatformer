@@ -6,7 +6,7 @@ public class SmoothSliderHealth : MonoBehaviour
 {
     [SerializeField] private Health _health;
     [SerializeField] private Slider _slider;
-    [SerializeField] protected float _smoothSpeed = 20f;
+    [SerializeField] private float _smoothSpeed = 20f;
 
     private float _targetValue;
     private Coroutine _smoothCorutine;
