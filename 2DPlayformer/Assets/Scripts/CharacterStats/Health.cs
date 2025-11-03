@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    public event Action<Health> DieCharacter;
-    public event Action<int, int> Changed;
-    public event Action<int, int> Initialized;
-
     [SerializeField] private int _maxValue = 100;
 
     private int _currentValue;
     private int _minValue = 0;
+
+    public event Action<Health> DieCharacter;
+    public event Action<int, int> Changed;
+    public event Action<int, int> Initialized;
 
     private void Awake()
     {
