@@ -9,6 +9,7 @@ public class GroundChecker : MonoBehaviour
 
     private float _updateInterval = 0.1f;
     private bool _isGrounded;
+
     public bool IsGrounded => _isGrounded;
 
     private void Start()

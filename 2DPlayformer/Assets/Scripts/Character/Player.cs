@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private CharacterJumper _characterJumper;
     [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private CharacterRotator _characterRotator;
+    [SerializeField] private VampirismSpell _vampirism;
 
     private float _moveInput;
     private bool _jumpRequested;
@@ -25,6 +26,13 @@ public class Player : MonoBehaviour
         {
             _jumpRequested = true;
             _inputReader.ConsumeJump();
+        }
+
+        if (_inputReader.VampirismPressed && _vampirism.IsReady)
+        {
+            _vampirism.ActivateSpell();
+            _inputReader.ConsumeVampirism();
+            Debug.Log($"Кнопка нажата");
         }
     }
 
