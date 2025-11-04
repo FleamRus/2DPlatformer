@@ -33224,6 +33224,7 @@ GameObject:
   - component: {fileID: 1795616600}
   - component: {fileID: 1795616601}
   - component: {fileID: 1795616602}
+  - component: {fileID: 1795616603}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -33462,7 +33463,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _spaceSpellRadius: 8
+--- !u!114 &1795616603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795616579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1380f40b400ea4a808d9b6e0cc8104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _sphere: {fileID: 1130187899}
+  _spell: {fileID: 1795616602}
 --- !u!1 &1800466584
 GameObject:
   m_ObjectHideFlags: 0
